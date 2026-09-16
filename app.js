@@ -30,7 +30,12 @@ if(menu&&nav){
 }
 
 const whatsapp=message=>'https://wa.me/5594992972083?text='+encodeURIComponent(message||'Olá! Gostaria de falar com a Seu Moura.');
-document.querySelectorAll('.whatsapp').forEach(link=>{link.href=whatsapp(link.dataset.message);});
+document.querySelectorAll('.whatsapp').forEach(link=>{
+  let message=link.dataset.message;
+  const propertyUrl=link.closest('[data-property-url]')?.dataset.propertyUrl;
+  if(propertyUrl)message+=`\n\nVer imóvel: ${new URL(propertyUrl,window.location.href).href}`;
+  link.href=whatsapp(message);
+});
 if($('#year'))$('#year').textContent=new Date().getFullYear();
 
 const ownerForm=$('#owner-form');

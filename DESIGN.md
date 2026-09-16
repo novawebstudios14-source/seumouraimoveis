@@ -17,7 +17,7 @@ Design variance 6, motion intensity 4, visual density 3: manter o espaço e a co
 - Tema escuro acompanha o sistema: fundo #161616, superfície #202020, texto #F5F5F5, secundário #B8B8B8.
 - Laranja sobre branco não serve para texto pequeno. Ações laranja usam texto preto. Foco claro #A84E00; foco sobre fundos escuros #FF971E.
 - Fotografias recebem apenas sobreposição neutra, nunca uma tintura verde.
-- Tipografia editorial existente preservada; a ênfase usa a mesma família, sem misturar um itálico Georgia.
+- Títulos usam Archivo 600/500, com construção arquitetônica, peso firme e tracking fechado. Textos, navegação e controles usam Manrope 400–700 para leitura clara. Não usar serifas decorativas ou itálicos frágeis.
 - Botões e controles de galeria: raio 4px; botão flutuante de WhatsApp: pill, como controle persistente separado.
 - Textos de campos: 16px para evitar zoom no Safari; alvos de toque 44px ou maiores.
 - Tabler Icons, outline, 1.8px. Sem glifos que possam virar emoji no iOS.

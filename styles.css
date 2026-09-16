@@ -153,27 +153,29 @@ em{font-family:inherit;font-style:normal;font-size:1em;font-weight:500}
 }
 
 /* Caio Moura introduction */
-.founder-section{max-width:none;padding:110px max(8%,calc((100vw - 1450px)/2));display:grid;grid-template-columns:minmax(300px,480px) minmax(0,1fr);gap:clamp(60px,9vw,150px);align-items:center;background:#191919;color:#f7f7f7;overflow:hidden}
+.founder-section{max-width:none;padding:100px max(8%,calc((100vw - 1450px)/2)) 110px;display:flex;flex-direction:column;align-items:center;gap:44px;background:#191919;color:#f7f7f7;overflow:hidden}
+.founder-heading{width:min(100%,720px);text-align:center}
+.founder-heading h2{font-family:var(--display);font-weight:600;font-size:clamp(48px,5.4vw,82px);letter-spacing:-.05em}
+.founder-heading h2 em{color:#ff971e}
 .founder-video{position:relative;width:100%;max-width:480px;margin-inline:auto;background:#0f0f0f;border:1px solid #ffffff30;box-shadow:24px 24px 0 #ff971e}
 .founder-video video{display:block;width:100%;height:auto;aspect-ratio:512/910;background:#0f0f0f;object-fit:contain}
-.founder-copy{max-width:650px}
+.founder-copy{width:min(100%,680px)}
 .founder-copy .eyebrow{margin-bottom:18px;color:#ff971e}
-.founder-copy h2{font-family:var(--display);font-weight:600;font-size:clamp(48px,5.4vw,82px);letter-spacing:-.05em}
-.founder-copy h2 em{color:#ff971e}
-.founder-copy>p:not(.eyebrow){max-width:52ch;margin-top:28px;color:#d1d1d1;font-size:17px;line-height:1.75}
+.founder-copy>p:not(.eyebrow){max-width:52ch;margin-top:24px;color:#d1d1d1;font-size:17px;line-height:1.75}
 .founder-copy .founder-meta{padding-top:22px;border-top:1px solid #ffffff30;font-size:14px!important;color:#f2f2f2!important}
 .founder-copy .button{margin-top:34px;min-width:280px;font-size:16px;font-weight:700;color:#191919}
 
 @media(max-width:1000px){
-  .founder-section{padding-inline:6%;grid-template-columns:minmax(280px,420px) minmax(0,1fr);gap:7%}
+  .founder-section{padding-inline:6%}
   .founder-video{box-shadow:18px 18px 0 #ff971e}
 }
 @media(max-width:720px){
-  .founder-section{padding:68px 7% 72px;grid-template-columns:1fr;gap:46px}
+  .founder-section{padding:64px 7% 72px;gap:32px}
+  .founder-heading{text-align:left}
+  .founder-heading h2{font-size:44px;line-height:1.08}
   .founder-video{width:auto;max-width:100%;height:min(72svh,680px);box-shadow:12px 12px 0 #ff971e}
   .founder-video video{width:auto;max-width:100%;height:100%;margin-inline:auto}
   .founder-copy{max-width:none}
-  .founder-copy h2{font-size:44px;line-height:1.08}
   .founder-copy>p:not(.eyebrow){font-size:16px;margin-top:22px}
   .founder-copy .founder-meta{font-size:13px!important;padding-top:18px}
   .founder-copy .button{width:100%;min-width:0;min-height:58px;margin-top:28px}

@@ -107,7 +107,7 @@ em{font-family:inherit;font-style:normal;font-size:1em;font-weight:500}
 .catalog-empty p{color:var(--muted);margin:12px 0 25px}
 .catalog-note{font-size:12px;color:var(--muted);margin-top:22px}
 
-@media(max-width:1180px){
+@media(max-width:1400px){
   .catalog-filters{grid-template-columns:repeat(4,1fr)}
   .filter-heading{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--line)}
   .catalog-filters .button{grid-column:1/-1}

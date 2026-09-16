@@ -35,3 +35,4 @@ em{font-family:inherit;font-style:normal;font-size:1em;font-weight:500}
 .property h3,.empty h3,.statement>p{font-family:var(--display);font-weight:600;letter-spacing:-.04em}
 .property h3{line-height:1.08}
 .statement>p{line-height:1.12}
+.owner-purpose{margin:0 0 26px}

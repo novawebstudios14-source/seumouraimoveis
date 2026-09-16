@@ -9,7 +9,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
 const whatsapp=message=>'https://wa.me/5594992972083?text='+encodeURIComponent(message);
 document.querySelectorAll('.whatsapp').forEach(a=>{a.href=whatsapp(a.dataset.message);});
 $('#year').textContent=new Date().getFullYear();
-$('#owner-form').addEventListener('submit',e=>{e.preventDefault();const name=$('#name').value.trim(),city=$('#city').value.trim();if(!name||!city)return;window.open(whatsapp(`Olá, Seu Moura! Meu nome é ${name}. Quero anunciar um imóvel.\nTipo: ${$('#owner-type').value}\nCidade: ${city}\nPodemos conversar?`),'_blank','noopener,noreferrer');});
+$('#owner-form').addEventListener('submit',e=>{e.preventDefault();const name=$('#name').value.trim(),city=$('#city').value.trim();if(!name||!city)return;window.open(whatsapp(`Olá, Seu Moura! Meu nome é ${name}. Quero anunciar um imóvel.\nObjetivo: ${$('#owner-purpose').value}\nTipo: ${$('#owner-type').value}\nCidade: ${city}\nPodemos conversar?`),'_blank','noopener,noreferrer');});
 function filter(){const purpose=$('#purpose').value,location=$('#location').value,type=$('#type').value;const match=(purpose==='all'||purpose==='venda')&&(location==='all'||location==='ipiranga')&&(type==='all'||type==='casa');$('#property').hidden=!match;$('#empty').hidden=match;$('#result-count').textContent=match?'1 imóvel encontrado':'Nenhum imóvel para estes filtros';$('#clear').hidden=purpose==='all'&&location==='all'&&type==='all';}
 $('#search').addEventListener('submit',e=>{e.preventDefault();filter();$('#imoveis').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
 $('#clear').addEventListener('click',()=>{$('#search').reset();filter();});

@@ -1,12 +1,11 @@
 'use strict';
 const $=s=>document.querySelector(s);
 const header=$('.header'),menu=$('.menu'),nav=$('#navigation');
-window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>70),{passive:true});
+if('IntersectionObserver' in window){const headerObserver=new IntersectionObserver(([entry])=>header.classList.toggle('scrolled',!entry.isIntersecting),{rootMargin:'-80px 0px 0px 0px'});headerObserver.observe($('.hero'));}
 function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menu');}
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
-if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.remove('pending');observer.unobserve(entry.target);}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>{el.classList.add('pending');observer.observe(el);});}
 const whatsapp=message=>'https://wa.me/5594992972083?text='+encodeURIComponent(message);
 document.querySelectorAll('.whatsapp').forEach(a=>{a.href=whatsapp(a.dataset.message);});
 $('#year').textContent=new Date().getFullYear();

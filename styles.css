@@ -55,3 +55,98 @@ em{font-family:inherit;font-style:normal;font-size:1em;font-weight:500}
   .listing-actions .button{min-width:0;font-size:16px;gap:12px}
   .listings-section{padding-bottom:110px}
 }
+
+/* Separate property catalog */
+.catalog-entry{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.75fr);gap:10%;align-items:end;padding-top:80px;padding-bottom:90px;background:var(--surface)}
+.catalog-entry .eyebrow{color:#a84e00;margin-bottom:12px}
+.catalog-entry-copy{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
+.catalog-entry-copy p{color:var(--muted);max-width:48ch;font-size:16px}
+.catalog-entry .button{font-weight:700;min-width:245px}
+.header nav [aria-current=page]:after{transform:scaleX(1)!important}
+
+.catalog-page{background:#f3f3f1}
+.catalog-page .header{position:fixed;background:#141414;padding-top:8px;padding-bottom:8px;box-shadow:0 4px 25px #0002}
+.catalog-page main{padding-top:82px}
+.catalog-hero{background:#191919;color:#fff;padding:90px max(8%,calc((100vw - 1450px)/2)) 76px;display:grid;grid-template-columns:1.3fr .7fr;gap:10%;align-items:end}
+.catalog-hero .eyebrow{color:var(--accent);margin-bottom:18px}
+.catalog-hero h1{font-family:var(--display);font-size:clamp(44px,5vw,76px);line-height:1.03;letter-spacing:-.045em}
+.catalog-hero h1 em{color:var(--accent)}
+.catalog-hero>p{color:#cacaca;font-size:17px;max-width:44ch;padding-bottom:8px}
+
+.catalog-shell{max-width:1450px;margin:auto;padding:44px 5% 110px}
+.catalog-filters{display:grid;grid-template-columns:1.1fr repeat(4,1fr) auto;gap:0;background:var(--surface);border:1px solid var(--line);align-items:stretch}
+.filter-heading{padding:20px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+.filter-heading p{font-weight:700;font-size:15px}
+.filter-heading span{font-size:12px;color:var(--muted)}
+.catalog-filters label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:15px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:4px}
+.catalog-filters select{width:100%;border:0;background:transparent;color:var(--ink);font-size:15px;text-transform:none;letter-spacing:0;padding:4px 24px 4px 0;min-height:34px}
+.catalog-filters .button{border-radius:0;align-self:stretch;min-width:175px;font-weight:700}
+.catalog-result{display:flex;justify-content:space-between;align-items:center;padding:28px 0 18px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.catalog-result .text-button{min-height:44px;padding-inline:8px}
+
+.catalog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:28px}
+.catalog-card{min-width:0;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
+.catalog-media{position:relative;aspect-ratio:4/3;background:#d8d8d8;overflow:hidden}
+.catalog-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease-out)}
+.catalog-card:hover .catalog-media img{transform:scale(1.025)}
+.catalog-badge{position:absolute;top:18px;left:18px;background:var(--accent);color:#191919;padding:7px 11px;font-size:11px;font-weight:700}
+.catalog-card-body{padding:30px;display:flex;flex-direction:column;flex:1}
+.catalog-card h2{font-family:var(--display);font-size:clamp(29px,2.8vw,42px);line-height:1.06;letter-spacing:-.04em}
+.catalog-card .listing-type{margin-bottom:7px}
+.catalog-card .listing-location{margin:10px 0 0}
+.catalog-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px 0;margin:24px 0 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.catalog-specs dt{font-size:12px;color:var(--muted)}
+.catalog-specs dd{margin:4px 0 0;font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.catalog-price{display:flex;flex-direction:column;margin-top:auto}
+.catalog-price span{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.catalog-price strong{font-size:27px;font-weight:700;font-variant-numeric:tabular-nums}
+.catalog-price small{font-size:13px;color:var(--muted);margin-top:2px}
+.catalog-card .button{width:100%;margin-top:22px;font-weight:700}
+.catalog-empty{text-align:center;padding:75px 24px;margin-top:28px;background:var(--surface);border:1px solid var(--line)}
+.catalog-empty h2{font-size:38px}
+.catalog-empty p{color:var(--muted);margin:12px 0 25px}
+.catalog-note{font-size:12px;color:var(--muted);margin-top:22px}
+
+@media(max-width:1180px){
+  .catalog-filters{grid-template-columns:repeat(4,1fr)}
+  .filter-heading{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--line)}
+  .catalog-filters .button{grid-column:1/-1}
+  .catalog-filters label:last-of-type{border-right:0}
+}
+@media(max-width:720px){
+  .catalog-entry{grid-template-columns:1fr;gap:28px;padding-top:58px;padding-bottom:64px}
+  .catalog-entry-copy{gap:22px}
+  .catalog-entry .button{width:100%}
+  .catalog-page main{padding-top:76px}
+  .catalog-hero{padding:58px 7% 50px;grid-template-columns:1fr;gap:24px}
+  .catalog-hero h1{font-size:43px;line-height:1.08}
+  .catalog-hero>p{font-size:15px;padding:0}
+  .catalog-shell{padding:24px 7% 90px}
+  .catalog-filters{grid-template-columns:1fr 1fr}
+  .filter-heading{padding:17px 18px}
+  .catalog-filters label{padding:14px;border-bottom:1px solid var(--line)}
+  .catalog-filters label:nth-of-type(2n){border-right:0}
+  .catalog-filters select{font-size:16px}
+  .catalog-grid{grid-template-columns:1fr;gap:22px;margin-top:22px}
+  .catalog-media{aspect-ratio:4/3}
+  .catalog-card-body{padding:24px 20px 22px}
+  .catalog-card h2{font-size:32px}
+  .catalog-specs{margin:19px 0 18px;padding:16px 0}
+  .catalog-specs dt{font-size:11px}
+  .catalog-specs dd{font-size:18px}
+  .catalog-price strong{font-size:28px}
+  .catalog-card .button{min-height:56px}
+}
+@media(max-width:390px){
+  .catalog-filters{grid-template-columns:1fr}
+  .catalog-filters label{border-right:0}
+}
+@media(prefers-color-scheme:dark){
+  .catalog-entry{background:#202020}
+  .catalog-page{background:#181818}
+  .catalog-entry .eyebrow{color:var(--accent)}
+  .catalog-filters select option{background:#202020;color:#f5f5f5}
+}
+@media(prefers-reduced-motion:reduce){
+  .catalog-media img{transition:none}
+}

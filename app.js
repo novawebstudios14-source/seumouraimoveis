@@ -97,22 +97,26 @@ if(dialog){
   dialog.addEventListener('keydown',event=>{if(event.key==='ArrowRight')showPhoto(currentPhoto+1);if(event.key==='ArrowLeft')showPhoto(currentPhoto-1);});
 }
 
-// Release the brand entrance as soon as the first-screen image is decoded.
-// Never wait for below-the-fold photos or the presentation video.
+// Complete the logo reveal before opening the first screen, including cached visits.
 (() => {
   const state = window.mouraLoading;
   const loader = document.getElementById('moura-loader');
   if (!state || !loader || !document.documentElement.classList.contains('moura-loading')) return;
+  const logo = loader.querySelector('.moura-loader__original');
+  const reveal = logo?.getAnimations?.().find(animation => animation.animationName === 'moura-brand');
+  const brandReady = reveal ? reveal.finished.catch(() => {}) : new Promise(resolve => setTimeout(resolve, 1900));
   let closing = false;
   const finish = () => {
     if (closing) return;
     closing = true;
-    loader.classList.add('is-leaving');
-    // Resume the site's existing entrance while the panels open.
-    document.querySelectorAll('.hero-image, .hero-content').forEach(element => {
-      element.getAnimations().forEach(animation => animation.play());
-    });
-    setTimeout(() => { clearTimeout(state.timer); state.release(); }, 720);
+    brandReady.then(() => setTimeout(() => {
+      if (!document.documentElement.classList.contains('moura-loading')) return;
+      loader.classList.add('is-leaving');
+      document.querySelectorAll('.hero-image, .hero-content').forEach(element => {
+        element.getAnimations?.().forEach(animation => animation.play());
+      });
+      setTimeout(() => { clearTimeout(state.timer); state.release(); }, 720);
+    }, 300));
   };
   const image = document.querySelector('.hero-image');
   if (!image) { finish(); return; }

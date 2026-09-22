@@ -96,3 +96,32 @@ if(dialog){
   $('#next').addEventListener('click',()=>showPhoto(currentPhoto+1));
   dialog.addEventListener('keydown',event=>{if(event.key==='ArrowRight')showPhoto(currentPhoto+1);if(event.key==='ArrowLeft')showPhoto(currentPhoto-1);});
 }
+
+// Release the brand entrance as soon as the first-screen image is decoded.
+// Never wait for below-the-fold photos or the presentation video.
+(() => {
+  const state = window.mouraLoading;
+  const loader = document.getElementById('moura-loader');
+  if (!state || !loader || !document.documentElement.classList.contains('moura-loading')) return;
+  let closing = false;
+  const finish = () => {
+    if (closing) return;
+    closing = true;
+    loader.classList.add('is-leaving');
+    // Resume the site's existing entrance while the panels open.
+    document.querySelectorAll('.hero-image, .hero-content').forEach(element => {
+      element.getAnimations().forEach(animation => animation.play());
+    });
+    setTimeout(() => { clearTimeout(state.timer); state.release(); }, 720);
+  };
+  const image = document.querySelector('.hero-image');
+  if (!image) { finish(); return; }
+  if (typeof image.decode === 'function') {
+    image.decode().catch(() => {}).then(finish);
+  } else if (image.complete) {
+    finish();
+  } else {
+    image.addEventListener('load', finish, { once: true });
+    image.addEventListener('error', finish, { once: true });
+  }
+})();
